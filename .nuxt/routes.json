@@ -2,8 +2,8 @@
   {
     "name": "index",
     "path": "/",
-    "component": "/opt/proyectos/carlos/nuxt/assist-control/pages/index.vue",
+    "component": "/opt/proyectos/carlos/assist-control/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_1e97cf38"
+    "_name": "_4f282706"
   }
 ]

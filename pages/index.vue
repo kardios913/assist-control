@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <b-button @click="showModal = ! showModal" variant="success">Hola</b-button>
-  <b-modal v-model="showModal" id="modal-1" title="BootstrapVue">
-    <p class="my-4">Hello from modal!</p>
-  </b-modal>
+    <b-modal v-model="showModal" id="modal-1" title="BootstrapVue">
+      <p class="my-4">{{this.$store.getters.userInfo.message}}</p>
+    </b-modal>
   </div>
 </template>
 
@@ -16,6 +16,9 @@ export default {
     return {
       showModal: false
     }
+  },
+  created () {
+    this.$store.dispatch('setUserInfo', {message: 'hola como estas' })
   }
 }
 </script>
