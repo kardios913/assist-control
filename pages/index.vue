@@ -1,17 +1,19 @@
 <template>
   <div id="app">
-    <b-button @click="showModal = ! showModal" variant="success">Hola</b-button>
-    <b-modal v-model="showModal" id="modal-1" title="BootstrapVue">
-      <p class="my-4">{{this.$store.getters.userInfo.message}}</p>
-    </b-modal>
+    <layout>
+      <b-button @click="showModal = ! showModal" variant="success">Hola</b-button>
+    </layout>
+      <b-modal v-model="showModal" id="modal-1" title="BootstrapVue">
+        <p class="my-4">{{this.$store.getters.userInfo.message}}</p>
+      </b-modal>
   </div>
 </template>
 
 <script>
-
+import Layout from '@/components/layout'
 export default {
   name: 'App',
-  layout: 'default',
+  components: { Layout },
   data () {
     return {
       showModal: false
@@ -22,14 +24,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
