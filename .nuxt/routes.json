@@ -1,5 +1,12 @@
 [
   {
+    "name": "control-evento",
+    "path": "/control-evento",
+    "component": "/opt/proyectos/carlos/assist-control/pages/control-evento.vue",
+    "chunkName": "pages/control-evento",
+    "_name": "_3c4732fe"
+  },
+  {
     "name": "registrar-evento",
     "path": "/registrar-evento",
     "component": "/opt/proyectos/carlos/assist-control/pages/registrar-evento.vue",

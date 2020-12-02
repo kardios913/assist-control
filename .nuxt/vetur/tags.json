@@ -1,4 +1,10 @@
 {
+  "ControlEvento": {
+    "description": "Auto imported from components/control-evento.vue"
+  },
+  "LazyControlEvento": {
+    "description": "Auto imported from components/control-evento.vue"
+  },
   "RegistrarEvento": {
     "description": "Auto imported from components/registrar-evento.vue"
   },

@@ -72,12 +72,20 @@
           </b-row>
         </b-form>
       </b-card>
+      <titulo-fixed class-titulo-fixed="bg-danger p-1 text-center text-white" titulo="Asistentes" />
+      <b-card class="mb-3" style="background-color: #f0f2f6 !important;">
+        <b-table v-if="listaAsistentes.length > 0" striped hover :items="listaAsistentes" :fields="fieldsPersona">
+          <template #cell(action)="asistente">
+            <b-button variant="danger" size="sm" @click="eliminar(asistente.item)"><i class="fa fa-trash-o" /></b-button>
+          </template>
+        </b-table>
+        <b-alert variant="info" v-else show>No se encontraron asistentes al evento</b-alert>
+      </b-card>
       <titulo-fixed class-titulo-fixed="bg-danger p-1 text-center text-white" titulo="Lista Personas" />
       <b-card style="background-color: #f0f2f6 !important;">
-        <b-table v-if="listaPersonas.length > 0" striped hover :items="listaPersonas" :fields="fieldsPersona">
-          <template #cell(action)="data">
-            <b-button variant="success" size="sm" @click="agregar(data.item)"><i class="fa fa-plus" /></b-button>
-            <b-button variant="danger" size="sm" @click="eliminar(data.item)"><i class="fa fa-trash-o" /></b-button>
+        <b-table v-if="listaNoAsistentes.length > 0" striped hover :items="listaNoAsistentes" :fields="fieldsPersona">
+          <template #cell(action)="persona">
+            <b-button variant="success" size="sm" @click="agregar(persona.item)"><i class="fa fa-plus" /></b-button>
           </template>
         </b-table>
         <b-alert variant="info" v-else show>No se encontraron personas registradas</b-alert>
@@ -132,13 +140,16 @@ export default {
         {key: 'documento', label: 'Documento'},
         {key: 'etiqueta', labale: 'Etiqueta RFID'},
         {key: 'action', label: ''}
-      ]
+      ],
+      asistencias: [],
+      listaAsistentes: [],
+      listaNoAsistentes: []
     }
   },
   created () {
     this.action = this.act
     this.listaEvento = this.$store.getters.getListEvent
-        this.listaPersonas = this.$store.getters.getListUserInfo
+    this.listaPersonas = this.$store.getters.getListUserInfo
     if (this.listaPersonas.length > 0) {
         this.listaPersonas.forEach(p => {
             p.text = p.nombre + ' ' + p.apellido + ' - ' + p.documento 
@@ -150,6 +161,7 @@ export default {
       return false
     },
     cargar (item) {
+      this.cargarAsistencia(item)
       this.evento = item
       this.action = 'REGISTRAR'
     },
@@ -158,10 +170,61 @@ export default {
       this.action = 'LISTAR'
     },
     agregar (item) {
-
+      let asistencia = this.$store.getters.getAsistencias
+      let asistente = {
+        idEvento: this.evento.id,
+        idPersona: item.id
+      }
+      asistencia.push(asistente)
+      this.$store.dispatch('setAsistencias', asistencia)
+      this.cargarAsistencia(this.evento)
     },
     eliminar (item) {
+      let asistencia = this.$store.getters.getAsistencias
+      let asistente = {
+        idEvento: this.evento.id,
+        idPersona: item.id
+      }
+      let index = asistencia.indexOf(asistente)
+      if (index >= -1) {
 
+        asistencia.splice(index, 1)
+      }
+      this.$store.dispatch('setAsistencias', asistencia)
+      this.cargarAsistencia(this.evento)
+    },
+    cargarAsistencia (item) {
+      this.asistencias = []
+      this.listaAsistentes = []
+      this.listaNoAsistentes = []
+      let asistencia = this.$store.getters.getAsistencias
+      if (asistencia.length > 0) {
+        asistencia.forEach(asis => {
+          if (asis.idEvento === item.id) {
+            this.asistencias.push(asis)
+            this.listaAsistentes.push(this.cargarPersona(asis.idPersona))
+          }
+        })
+      }
+      this.cargarNoAsistentes()
+    },
+    cargarPersona (id) {
+      let persona = {}
+      this.listaPersonas.forEach(p => {
+        if (p.id === id) {
+          persona = p
+        }
+      })
+      return persona
+    },
+    cargarNoAsistentes () {
+      this.listaNoAsistentes = []
+      this.listaPersonas.forEach(persona => {
+        let index = this.listaAsistentes.indexOf(persona)
+        if (index < 0) {
+          this.listaNoAsistentes.push(persona)
+        }
+      })
     }
   }
 }

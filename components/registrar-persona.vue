@@ -147,7 +147,7 @@ export default {
   },
   data () {
     return {
-      persona: PERSONA,
+      persona: {...PERSONA},
       action: 'LISTAR',
       listaPersonas: [],
       fields: [
@@ -193,7 +193,7 @@ export default {
       list.push(this.persona)
       this.$store.dispatch('setListUserInfo', list)
       this.listaPersonas = list
-      this.persona = PERSONA
+      this.persona = {...PERSONA}
       this.action = 'LISTAR'
     },
     cargarId (list) {
