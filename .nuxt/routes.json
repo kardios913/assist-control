@@ -1,5 +1,12 @@
 [
   {
+    "name": "registrar-persona",
+    "path": "/registrar-persona",
+    "component": "/opt/proyectos/carlos/assist-control/pages/registrar-persona.vue",
+    "chunkName": "pages/registrar-persona",
+    "_name": "_d9029c00"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "/opt/proyectos/carlos/assist-control/pages/index.vue",
