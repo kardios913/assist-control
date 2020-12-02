@@ -1,25 +1,32 @@
 {
-  "name": "assist-control",
-  "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "generate": "nuxt generate",
-    "start": "nuxt start"
-  },
-  "dependencies": {
-    "axios": "^0.21.0",
-    "bootstrap": "^4.5.3",
-    "bootstrap-vue": "^2.0.0-rc.28",
-    "bootstrap-vue-msgbox": "0.0.3",
-    "core-js": "^3.6.4",
-    "fontawesome": "^5.6.3",
-    "jquery": "^3.5.0",
-    "nuxt": "^2.14.8",
-    "nuxt-fontawesome": "^0.4.0",
-    "popper.js": "^1.16.1",
-    "simple-line-icons": "^2.4.1",
-    "vue": "^2.6.12",
-    "vue-axios": "^3.2.0",
-    "vuex": "^3.6.0"
-  }
+    "name": "assist-control",
+    "scripts": {
+        "dev": "nuxt",
+        "build": "nuxt build",
+        "generate": "nuxt generate",
+        "start": "nuxt start"
+    },
+    "dependencies": {
+        "axios": "^0.21.0",
+        "bootstrap": "^4.5.3",
+        "bootstrap-navbar-sidebar": "^4.0.2",
+        "bootstrap-vue": "^2.0.0-rc.28",
+        "bootstrap-vue-msgbox": "0.0.3",
+        "core-js": "^3.6.4",
+        "font-awesome": "^4.7.0",
+        "fontawesome": "^5.6.3",
+        "jquery": "^3.5.0",
+        "nuxt": "^2.14.8",
+        "nuxt-fontawesome": "^0.4.0",
+        "popper.js": "^1.16.1",
+        "simple-line-icons": "^2.4.1",
+        "vue": "^2.6.12",
+        "vue-axios": "^3.2.0",
+        "vue-sidebar-menu": "^4.7.4",
+        "vuex": "^3.6.0"
+    },
+    "devDependencies": {
+        "node-sass": "^4.12.0",
+        "sass-loader": "^7.1.0"
+    }
 }
