@@ -3,7 +3,7 @@
     <div v-if="action === 'LISTAR'">
       <titulo-fixed class-titulo-fixed="bg-danger p-1 text-center text-white" titulo="Personas" />
       <b-card style="background-color: #f0f2f6 !important;">
-        <b-table v-if="listaPersonas.length > 0" striped hover :items="listaPersonas"></b-table>
+        <b-table v-if="listaPersonas.length > 0" striped hover :items="listaPersonas" :fields="fields" />
         <b-alert variant="info" v-else show>No se encontraron personas registradas</b-alert>
         <b-btn variant="danger" class="mt-1 float-right" @click="action = 'REGISTRAR'">Registrar</b-btn>
       </b-card>
@@ -121,6 +121,15 @@
 </template>
 <script>
 import TituloFixed from './titulo-fixed'
+const PERSONA = {
+  id: '',
+  nombre: '',
+  apellido: '',
+  email: '',
+  documento: '',
+  codigo: '',
+  etiqueta: ''
+}
 export default {
   name: 'RegistrarPersona',
   components: {
@@ -138,17 +147,14 @@ export default {
   },
   data () {
     return {
-      persona: {
-        id: '',
-        nombre: '',
-        apellido: '',
-        email: '',
-        documento: '',
-        codigo: '',
-        etiqueta: ''
-      },
+      persona: PERSONA,
       action: 'LISTAR',
-      listaPersonas: []
+      listaPersonas: [],
+      fields: [
+        {key: 'nombre', label: 'Nombre'},
+        {key: 'apellido', label: 'Apellido'},
+        {key: 'codigo', label: 'Código'}
+      ]
     }
   },
   created () {
@@ -187,6 +193,7 @@ export default {
       list.push(this.persona)
       this.$store.dispatch('setListUserInfo', list)
       this.listaPersonas = list
+      this.persona = PERSONA
       this.action = 'LISTAR'
     },
     cargarId (list) {

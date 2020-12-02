@@ -41,7 +41,7 @@ export default {
                     },
                     {
                         href: '/control-evento',
-                        title: 'Control evento',
+                        title: 'Control Asistencia',
                         icon: 'fa fa-address-card-o '
                     }
                 ],

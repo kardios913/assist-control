@@ -122,6 +122,15 @@
 </template>
 <script>
 import TituloFixed from './titulo-fixed'
+const EVENTO = {
+  id: '',
+  nombre: '',
+  fechaInicio: '',
+  fechaFin: '',
+  encargado: '',
+  lugar: '',
+  aforo: 0
+}
 export default {
   name: 'RegistrarEvento',
   components: {
@@ -139,15 +148,7 @@ export default {
   },
   data () {
     return {
-      evento: {
-        id: '',
-        nombre: '',
-        fechaInicio: '',
-        fechaFin: '',
-        encargado: '',
-        lugar: '',
-        aforo: 0
-      },
+      evento: EVENTO,
       action: 'LISTAR',
       listaEvento: [],
       listaPersonas: [],
@@ -204,6 +205,7 @@ export default {
       list.push(this.evento)
       this.$store.dispatch('setListEvent', list)
       this.listaEvento = list
+      this.evento = EVENTO
       this.action = 'LISTAR'
     },
     cargarId (list) {
