@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
+const _a747181e = () => interopDefault(import('../pages/registrar-evento.vue' /* webpackChunkName: "pages/registrar-evento" */))
 const _d9029c00 = () => interopDefault(import('../pages/registrar-persona.vue' /* webpackChunkName: "pages/registrar-persona" */))
 const _4f282706 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
@@ -23,6 +24,10 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+    path: "/registrar-evento",
+    component: _a747181e,
+    name: "registrar-evento"
+  }, {
     path: "/registrar-persona",
     component: _d9029c00,
     name: "registrar-persona"

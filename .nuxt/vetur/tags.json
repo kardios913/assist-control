@@ -1,4 +1,10 @@
 {
+  "RegistrarEvento": {
+    "description": "Auto imported from components/registrar-evento.vue"
+  },
+  "LazyRegistrarEvento": {
+    "description": "Auto imported from components/registrar-evento.vue"
+  },
   "RegistrarPersona": {
     "description": "Auto imported from components/registrar-persona.vue"
   },

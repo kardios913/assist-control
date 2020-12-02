@@ -1,5 +1,12 @@
 [
   {
+    "name": "registrar-evento",
+    "path": "/registrar-evento",
+    "component": "/opt/proyectos/carlos/assist-control/pages/registrar-evento.vue",
+    "chunkName": "pages/registrar-evento",
+    "_name": "_a747181e"
+  },
+  {
     "name": "registrar-persona",
     "path": "/registrar-persona",
     "component": "/opt/proyectos/carlos/assist-control/pages/registrar-persona.vue",

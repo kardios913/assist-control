@@ -1,30 +1,30 @@
 <template>
   <div>
     <div v-if="action === 'LISTAR'">
-      <titulo-fixed class-titulo-fixed="bg-danger p-1 text-center text-white" titulo="Personas" />
+      <titulo-fixed class-titulo-fixed="bg-danger p-1 text-center text-white" titulo="Eventos" />
       <b-card style="background-color: #f0f2f6 !important;">
-        <b-table v-if="listaPersonas.length > 0" striped hover :items="listaPersonas"></b-table>
-        <b-alert variant="info" v-else show>No se encontraron personas registradas</b-alert>
+        <b-table v-if="listaEvento.length > 0" striped hover :items="listaEvento" :fields="fields"></b-table>
+        <b-alert variant="info" v-else show>No se encontraron eventos registrados</b-alert>
         <b-btn variant="danger" class="mt-1 float-right" @click="action = 'REGISTRAR'">Registrar</b-btn>
       </b-card>
     </div>
     <div v-else>
-      <titulo-fixed class-titulo-fixed="bg-danger p-1 text-center text-white" titulo="Registrar Persona" />
+      <titulo-fixed class-titulo-fixed="bg-danger p-1 text-center text-white" titulo="Registrar Evento" />
       <b-card style="background-color: #f0f2f6 !important;">
         <b-form >
           <b-row>
             <b-col cols="12" lg="6" md="6">
               <b-form-group
                 id="input-group-1"
-                label="Nombres:"
+                label="Nombre del Evento:"
                 label-for="input-1"
               >
                 <b-form-input
                   id="input-1"
-                  v-model="persona.nombre"
+                  v-model="evento.nombre"
                   type="text"
                   required
-                  placeholder="Nombres"
+                  placeholder="Nombre del Evento"
                   :disbled="disabled"
                 ></b-form-input>
               </b-form-group>
@@ -32,15 +32,15 @@
             <b-col cols="12" lg="6" md="6">
               <b-form-group
                 id="input-group-2"
-                label="Apellidos:"
+                label="Fecha Inicio:"
                 label-for="input-2"
               >
                 <b-form-input
                   id="input-2"
-                  v-model="persona.apellido"
-                  type="text"
+                  v-model="evento.fechaInicio"
+                  type="date"
                   required
-                  placeholder="Apellidos"
+                  placeholder="Fecha Inicio"
                   :disbled="disabled"
                 ></b-form-input>
               </b-form-group>
@@ -48,15 +48,15 @@
             <b-col cols="12" lg="6" md="6">
               <b-form-group
                 id="input-group-3"
-                label="Documento:"
+                label="Fecha Fin:"
                 label-for="input-3"
               >
                 <b-form-input
                   id="input-3"
-                  v-model="persona.documento"
-                  type="text"
+                  v-model="evento.fechaFin"
+                  type="date"
                   required
-                  placeholder="Documento"
+                  placeholder="Fecha Fin"
                   :disbled="disabled"
                 ></b-form-input>
               </b-form-group>
@@ -64,31 +64,32 @@
             <b-col cols="12" lg="6" md="6">
               <b-form-group
                 id="input-group-4"
-                label="Email:"
+                label="Encargado:"
                 label-for="input-4"
               >
-                <b-form-input
+                <b-form-select
                   id="input-4"
-                  v-model="persona.email"
-                  type="email"
+                  v-model="evento.encargado"
+                  :options="listaPersonas"
                   required
-                  placeholder="Email"
                   :disbled="disabled"
-                ></b-form-input>
+                  value-field="id"
+                  text-field="text"
+                ></b-form-select>
               </b-form-group>
             </b-col>
             <b-col cols="12" lg="6" md="6">
               <b-form-group
                 id="input-group-5"
-                label="Código:"
+                label="Lugar:"
                 label-for="input-5"
               >
                 <b-form-input
                   id="input-5"
-                  v-model="persona.codigo"
+                  v-model="evento.lugar"
                   type="text"
                   required
-                  placeholder="Código"
+                  placeholder="Lugar"
                   :disbled="disabled"
                 ></b-form-input>
               </b-form-group>
@@ -96,15 +97,15 @@
             <b-col cols="12" lg="6" md="6">
               <b-form-group
                 id="input-group-6"
-                label="Etiqueta RFID:"
+                label="Aforo:"
                 label-for="input-6"
               >
                 <b-form-input
                   id="input-6"
-                  v-model="persona.etiqueta"
-                  type="text"
+                  v-model="evento.aforo"
+                  type="number"
                   required
-                  placeholder="Etiqueta RFID"
+                  placeholder="Aforo"
                   :disbled="disabled"
                 ></b-form-input>
               </b-form-group>
@@ -122,7 +123,7 @@
 <script>
 import TituloFixed from './titulo-fixed'
 export default {
-  name: 'RegistrarPersona',
+  name: 'RegistrarEvento',
   components: {
     TituloFixed
   },
@@ -138,41 +139,57 @@ export default {
   },
   data () {
     return {
-      persona: {
+      evento: {
         id: '',
         nombre: '',
-        apellido: '',
-        email: '',
-        documento: '',
-        codigo: '',
-        etiqueta: ''
+        fechaInicio: '',
+        fechaFin: '',
+        encargado: '',
+        lugar: '',
+        aforo: 0
       },
       action: 'LISTAR',
-      listaPersonas: []
+      listaEvento: [],
+      listaPersonas: [],
+      fields: [
+          {key: 'nombre', label: 'Evento'},
+          {key: 'fechaInicio', label: 'Fecha Inicio'},
+          {key: 'fechaFin', label: 'Fecha Fin'},
+          {key: 'lugar', label: 'Lugar'}
+      ]
     }
   },
   created () {
     this.action = this.act
+    this.listaEvento = this.$store.getters.getListEvent
     this.listaPersonas = this.$store.getters.getListUserInfo
+    if (this.listaPersonas.length > 0) {
+        this.listaPersonas.forEach(p => {
+            p.text = p.nombre + ' ' + p.apellido + ' - ' + p.documento 
+        })
+    }
   },
   methods: {
     validar () {
-      if ( this.persona.nombre === '' ) {
+      if (this.evento.nombre === '') {
         return true
       }
-      if ( this.persona.apellido === '' ) {
+      if (this.evento.fechaInicio === '') {
         return true
       }
-      if ( this.persona.email === '' ) {
+      if (this.evento.fechaFin === '') {
         return true
       }
-      if ( this.persona.documento === '' ) {
+      if (this.evento.encargado === '') {
         return true
       }
-      if ( this.persona.codigo === '' ) {
+      if (this.evento.lugar === '') {
         return true
       }
-      if ( this.persona.etiqueta === '' ) {
+      if (this.evento.aforo <= 0) {
+        return true
+      }
+      if (this.listaPersonas.length <= 0) {
         return true
       }
       return false
@@ -181,20 +198,20 @@ export default {
       if (this.validar()) {
         return
       }
-      this.listaPersonas = []
-      let list = this.$store.getters.getListUserInfo
+      this.listaEvento = []
+      let list = this.$store.getters.getListEvent
       this.cargarId(list)
-      list.push(this.persona)
-      this.$store.dispatch('setListUserInfo', list)
-      this.listaPersonas = list
+      list.push(this.evento)
+      this.$store.dispatch('setListEvent', list)
+      this.listaEvento = list
       this.action = 'LISTAR'
     },
     cargarId (list) {
         if (list.length === 0) {
-            this.persona.id = 0
+            this.evento.id = 0
         } else {
             let item = list[list.length -1]
-            this.persona.id = item.id + 1
+            this.evento.id = item.id + 1
         }
     }
   }
