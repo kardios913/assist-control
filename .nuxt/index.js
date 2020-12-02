@@ -13,8 +13,8 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_42e21ec4 from 'nuxt_plugin_plugin_42e21ec4' // Source: .\\components\\plugin.js (mode: 'all')
-import nuxt_plugin_installcomponents_5c03668e from 'nuxt_plugin_installcomponents_5c03668e' // Source: ..\\plugins\\install-components.js (mode: 'client')
+import nuxt_plugin_plugin_0bb0b47c from 'nuxt_plugin_plugin_0bb0b47c' // Source: ./components/plugin.js (mode: 'all')
+import nuxt_plugin_installcomponents_5c03668e from 'nuxt_plugin_installcomponents_5c03668e' // Source: ../plugins/install-components.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -203,8 +203,8 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_42e21ec4 === 'function') {
-    await nuxt_plugin_plugin_42e21ec4(app.context, inject)
+  if (typeof nuxt_plugin_plugin_0bb0b47c === 'function') {
+    await nuxt_plugin_plugin_0bb0b47c(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_installcomponents_5c03668e === 'function') {

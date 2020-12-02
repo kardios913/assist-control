@@ -1,14 +1,14 @@
 <template>
-  <div id="demo" style="background-color: #e2e2e2">
+  <div id="demo">
     <div class="demo">
       <div class="container">
         <Nuxt />
         <sidebar-menu :menu="menu"
                       theme="white-theme"
+                      width="250px"
                       @toggle-collapse="onToggleCollapse"
                       :collapsed="collapsed">
-          <span slot="toggle-icon"><i class="fa fa-angle-double-left" /></span>
-          <span slot="dropdown-icon"><i class="fa fa-angle-double-right" /></span>
+          <span slot="toggle-icon"><i :class="collapsed ? 'fa fa-angle-double-right' : 'fa fa-angle-double-left'" /></span>
         </sidebar-menu>
       </div>
     </div>
@@ -93,13 +93,31 @@ body {
 .container {
   max-width: 900px;
 }
-pre {
-  font-family: Consolas, monospace;
-  color: #000;
-  background: #fff;
-  border-radius: 2px;
-  padding: 15px;
-  line-height: 1.5;
-  overflow: auto;
+.vsm--header {
+  font-size: 20px;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+.v-sidebar-menu.vsm_white-theme .vsm--header {
+    color: white !important;
+}
+.v-sidebar-menu.vsm_white-theme {
+    background-color: #f2f2f2 !important;
+}
+.v-sidebar-menu.vsm_white-theme .vsm--link_level-1 .vsm--icon {
+    background-color: #bbc5d600 !important;
+}
+.v-sidebar-menu.vsm_white-theme .vsm--link_level-1.vsm--link_exact-active, .v-sidebar-menu.vsm_white-theme .vsm--link_level-1.vsm--link_active {
+    box-shadow: 3px 0px 0px 0px red inset !important;
+}
+.v-sidebar-menu.vsm_white-theme .vsm--link_level-1.vsm--link_exact-active .vsm--icon, .v-sidebar-menu.vsm_white-theme .vsm--link_level-1.vsm--link_active .vsm--icon {
+    color: black !important;
+    background-color: #26262600 !important;
+}
+.vsm--mobile-bg {
+  background-color: red !important;
+  opacity: 0.3 !important;
+  color: black !important;
 }
 </style>

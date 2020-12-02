@@ -20,8 +20,3 @@ export default {
   }
 }
 </script>
-<style>
-body {
-  background-color: #ebebeb;
-}
-</style>
