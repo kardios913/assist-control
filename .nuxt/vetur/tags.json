@@ -1,1 +1,116 @@
-{}
+{
+  "Layout": {
+    "description": "Auto imported from components/layout.vue"
+  },
+  "LazyLayout": {
+    "description": "Auto imported from components/layout.vue"
+  },
+  "Aside": {
+    "description": "Auto imported from components/layout/Aside.vue"
+  },
+  "LazyAside": {
+    "description": "Auto imported from components/layout/Aside.vue"
+  },
+  "Breadcrumb": {
+    "description": "Auto imported from components/layout/Breadcrumb.vue"
+  },
+  "LazyBreadcrumb": {
+    "description": "Auto imported from components/layout/Breadcrumb.vue"
+  },
+  "Callout": {
+    "description": "Auto imported from components/layout/Callout.vue"
+  },
+  "LazyCallout": {
+    "description": "Auto imported from components/layout/Callout.vue"
+  },
+  "Footer": {
+    "description": "Auto imported from components/layout/Footer.vue"
+  },
+  "LazyFooter": {
+    "description": "Auto imported from components/layout/Footer.vue"
+  },
+  "Header": {
+    "description": "Auto imported from components/layout/Header.vue"
+  },
+  "LazyHeader": {
+    "description": "Auto imported from components/layout/Header.vue"
+  },
+  "Switch": {
+    "description": "Auto imported from components/layout/Switch.vue"
+  },
+  "LazySwitch": {
+    "description": "Auto imported from components/layout/Switch.vue"
+  },
+  "HeaderDropdownAccount": {
+    "description": "Auto imported from components/layout/Header/HeaderDropdownAccount.vue"
+  },
+  "LazyHeaderDropdownAccount": {
+    "description": "Auto imported from components/layout/Header/HeaderDropdownAccount.vue"
+  },
+  "Sidebar": {
+    "description": "Auto imported from components/layout/Sidebar/Sidebar.vue"
+  },
+  "LazySidebar": {
+    "description": "Auto imported from components/layout/Sidebar/Sidebar.vue"
+  },
+  "SidebarFooter": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarFooter.vue"
+  },
+  "LazySidebarFooter": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarFooter.vue"
+  },
+  "SidebarForm": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarForm.vue"
+  },
+  "LazySidebarForm": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarForm.vue"
+  },
+  "SidebarHeader": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarHeader.vue"
+  },
+  "LazySidebarHeader": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarHeader.vue"
+  },
+  "SidebarMinimizer": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarMinimizer.vue"
+  },
+  "LazySidebarMinimizer": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarMinimizer.vue"
+  },
+  "SidebarNavDivider": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarNavDivider.vue"
+  },
+  "LazySidebarNavDivider": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarNavDivider.vue"
+  },
+  "SidebarNavDropdown": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarNavDropdown.vue"
+  },
+  "LazySidebarNavDropdown": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarNavDropdown.vue"
+  },
+  "SidebarNavItem": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarNavItem.vue"
+  },
+  "LazySidebarNavItem": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarNavItem.vue"
+  },
+  "SidebarNavLabel": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarNavLabel.vue"
+  },
+  "LazySidebarNavLabel": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarNavLabel.vue"
+  },
+  "SidebarNavLink": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarNavLink.vue"
+  },
+  "LazySidebarNavLink": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarNavLink.vue"
+  },
+  "SidebarNavTitle": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarNavTitle.vue"
+  },
+  "LazySidebarNavTitle": {
+    "description": "Auto imported from components/layout/Sidebar/SidebarNavTitle.vue"
+  }
+}

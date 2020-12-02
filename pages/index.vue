@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <layout>
       <b-button @click="showModal = ! showModal" variant="success">Hola</b-button>
     </layout>
