@@ -19,7 +19,6 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('setUserInfo', {message: 'hola como estas' })
   }
 }
 </script>

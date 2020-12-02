@@ -30,6 +30,11 @@ export default {
                         hiddenOnCollapse: false
                     },
                     {
+                        href: '/',
+                        title: 'Inicio',
+                        icon: 'fa fa-home'
+                    },
+                    {
                         href: '/registrar-persona',
                         title: 'Registrar Persona',
                         icon: 'fa fa-user'
@@ -68,7 +73,7 @@ body {
   color: #424242;
 }
 #demo {
-  padding-left: 350px;
+  padding-left: 250px;
   transition: 0.3s ease;
 }
 #demo.collapsed {
@@ -89,9 +94,6 @@ body {
 }
 .demo {
   padding: 50px;
-}
-.container {
-  max-width: 900px;
 }
 .vsm--header {
   font-size: 20px;
