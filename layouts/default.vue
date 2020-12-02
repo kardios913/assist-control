@@ -95,7 +95,7 @@ body {
 }
 .vsm--header {
   font-size: 20px;
-  background-color: red;
+  background-color: #dc3545;
   color: white;
   text-align: center;
 }
@@ -109,14 +109,14 @@ body {
     background-color: #bbc5d600 !important;
 }
 .v-sidebar-menu.vsm_white-theme .vsm--link_level-1.vsm--link_exact-active, .v-sidebar-menu.vsm_white-theme .vsm--link_level-1.vsm--link_active {
-    box-shadow: 3px 0px 0px 0px red inset !important;
+    box-shadow: 3px 0px 0px 0px #dc3545 inset !important;
 }
 .v-sidebar-menu.vsm_white-theme .vsm--link_level-1.vsm--link_exact-active .vsm--icon, .v-sidebar-menu.vsm_white-theme .vsm--link_level-1.vsm--link_active .vsm--icon {
     color: black !important;
     background-color: #26262600 !important;
 }
 .vsm--mobile-bg {
-  background-color: red !important;
+  background-color: #dc3545 !important;
   opacity: 0.3 !important;
   color: black !important;
 }

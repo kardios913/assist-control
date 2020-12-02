@@ -4,5 +4,11 @@
   },
   "LazyRegistrarPersona": {
     "description": "Auto imported from components/registrar-persona.vue"
+  },
+  "TituloFixed": {
+    "description": "Auto imported from components/titulo-fixed.vue"
+  },
+  "LazyTituloFixed": {
+    "description": "Auto imported from components/titulo-fixed.vue"
   }
 }
