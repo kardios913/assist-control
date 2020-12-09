@@ -91,6 +91,24 @@
         <b-alert variant="info" v-else show>No se encontraron personas registradas</b-alert>
       </b-card>
       <b-btn class="mt-1 float-left" @click="volver">Volver</b-btn>
+      <b-btn class="mt-1 float-right" variant="danger" @click="showModal = !showModal">Cargar csv</b-btn>
+    </div>
+    <div v-if="showModal">
+      <b-modal size="lg" hide-footer v-model="showModal" title="Cargar Asistencia">
+        <form enctype="multipart/form-data">
+            <input type="file" @change="onFileChange">
+        </form>
+        <b-form class="mt-2">
+          <b-form-textarea disabled v-model="log" />
+          <b-btn
+            variant="danger"
+            class="mt-1 float-right"
+            @click="resetModal"
+          >
+            Cerrar
+          </b-btn>
+        </b-form>
+      </b-modal>
     </div>
   </div>
 </template>
@@ -143,7 +161,10 @@ export default {
       ],
       asistencias: [],
       listaAsistentes: [],
-      listaNoAsistentes: []
+      listaNoAsistentes: [],
+      showModal: false,
+      fileinput: '',
+      log: ''
     }
   },
   created () {
@@ -175,9 +196,14 @@ export default {
         idEvento: this.evento.id,
         idPersona: item.id
       }
-      asistencia.push(asistente)
-      this.$store.dispatch('setAsistencias', asistencia)
-      this.cargarAsistencia(this.evento)
+      let asis = asistencia.find(asis => {
+        return this.evento.id === asis.idEvento && asis.idPersona === item.id
+      })
+      if (!asis) {
+        asistencia.push(asistente)
+        this.$store.dispatch('setAsistencias', asistencia)
+        this.cargarAsistencia(this.evento)
+      }
     },
     eliminar (item) {
       let asistencia = this.$store.getters.getAsistencias
@@ -210,8 +236,9 @@ export default {
     },
     cargarPersona (id) {
       let persona = {}
+      let fiend = false
       this.listaPersonas.forEach(p => {
-        if (p.id === id) {
+        if (p.id == id) {
           persona = p
         }
       })
@@ -225,6 +252,48 @@ export default {
           this.listaNoAsistentes.push(persona)
         }
       })
+    },
+    onFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length)
+          return;
+      this.createInput(files[0]);
+    },
+    async createInput(file) {
+      const reader = new FileReader();
+      const vm = this;
+      reader.onload = (e) => {
+        vm.fileinput = reader.result;
+        vm.fileinput = vm.fileinput.replace(/['"]+/g, '')
+        vm.log = ':::::Cargando:::::'
+        vm.log += '\nfile\n' + vm.fileinput
+        let personas = this.fileinput.split('\n')
+        if (personas.length > 2) {
+          for (let i = 1; i < personas.length - 1; i++) {
+            let persona = personas[i].split(',')
+            let id = persona[0]
+            let item = vm.cargarPersona(id)
+            vm.log += '\n/***********************/'
+            if (item) {
+              vm.agregar(item)
+              vm.log += '\n Asistente agregado ' + item.nombre + item.apellido
+            } else {
+              vm.log += '\n Error al agregar ' + persona[1] + ' Persona no registrada'
+            }
+          }
+        }
+      }
+      await reader.readAsText(file);
+    },
+    resetModal () {
+      this.fileinput = ''
+      this.showModal = false
+      this.log = ''
+    },
+    guardar () {
+      this.fileinput = ''
+      this.showModal = false
+      this.log = ''
     }
   }
 }

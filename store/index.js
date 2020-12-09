@@ -6,8 +6,37 @@ export const SET_ASISTENCIAS = 'SET_ASISTENCIAS'
 
 export const state = () => {
   return {
-    listUserInfo: [],
-    listEvent: [],
+    listUserInfo: [
+      {
+        id: 0,
+        nombre: 'Astrid',
+        apellido: 'Caicedo',
+        email: 'a@gmail.com',
+        documento: '1321324',
+        codigo: '1151472',
+        etiqueta: '256'
+      },
+      {
+        id: 1,
+        nombre: 'Edward',
+        apellido: 'Camargo',
+        email: 'e@gmail.com',
+        documento: '1321324',
+        codigo: '1151094',
+        etiqueta: '260'
+      }
+    ],
+    listEvent: [
+      {
+        id: 0,
+        nombre: 'Seminario Electrónica',
+        fechaInicio: '02/12/2020',
+        fechaFin: '02/12/2020',
+        encargado: 0,
+        lugar: 'Auditorio Eustorgio Colmenares',
+        aforo: 10
+      }
+    ],
     asistencias: []
   }
 }
